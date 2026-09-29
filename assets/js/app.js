@@ -58,17 +58,6 @@
         title: v.ready ? v.title : v.title + '（规划中）',
       }, icon(v.icon), h('span', { class: 'nav-label' }, v.title),
         v.ready ? null : h('span', { class: 'badge-coming' }, '规划中'))));
-
-    const themeBtn = h('div', {
-      class: 'nav-item', id: 'theme-toggle', title: '切换深浅色',
-      onclick: () => {
-        const cur = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        applyTheme(cur);
-        window.FK.settings.update({ theme: cur });
-      },
-    }, icon(document.documentElement.dataset.theme === 'dark' ? 'sun' : 'moon'),
-       h('span', { class: 'nav-label' }, '切换主题'));
-    navEl.append(themeBtn);
   }
 
   /* ---------------- 启动 ---------------- */

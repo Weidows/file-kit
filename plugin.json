@@ -2,7 +2,7 @@
   "name": "file-kit",
   "title": "文件工具箱",
   "description": "解散文件夹、S3 图床上传等文件工具集：支持多选、预览、撤销，持续扩展中",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Weidows",
   "homepage": "https://github.com/Weidows/file-kit",
   "main": "index.html",
