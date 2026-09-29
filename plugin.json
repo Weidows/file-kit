@@ -1,0 +1,65 @@
+{
+  "name": "file-kit",
+  "title": "文件工具箱",
+  "description": "解散文件夹、S3 图床上传等文件工具集：支持多选、预览、撤销，持续扩展中",
+  "version": "0.2.0",
+  "author": "Weidows",
+  "homepage": "https://github.com/Weidows/file-kit",
+  "main": "index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "tools": {
+    "upload_image": {
+      "description": "上传一张本地图片到已配置的 S3 图床，返回公开访问 URL",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string", "description": "图片的本地绝对路径" },
+          "dataUrl": { "type": "string", "description": "图片的 Data URL（与 path 二选一）" }
+        }
+      },
+      "outputSchema": {
+        "type": "object"
+      }
+    }
+  },
+  "features": [
+    {
+      "code": "extract-folder",
+      "explain": "解散文件夹：把文件夹内的文件提取到上级目录（支持多选）",
+      "cmds": [
+        "解散文件夹",
+        "提取文件",
+        "extract",
+        "jiesan",
+        {
+          "type": "files",
+          "label": "解散文件夹",
+          "fileType": "directory",
+          "minLength": 1
+        }
+      ]
+    },
+    {
+      "code": "image-host",
+      "explain": "图床上传：把图片上传到 S3 图床并复制链接",
+      "cmds": [
+        "图床",
+        "上传图床",
+        "upload",
+        "tuchuang",
+        {
+          "type": "img",
+          "label": "上传图床"
+        },
+        {
+          "type": "files",
+          "label": "上传图床",
+          "fileType": "file",
+          "extensions": ["jpg", "jpeg", "jfif", "png", "gif", "webp", "bmp", "svg", "ico", "avif"],
+          "minLength": 1
+        }
+      ]
+    }
+  ]
+}

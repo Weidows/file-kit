@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <title>文件工具箱</title>
+  <link rel="stylesheet" href="assets/css/app.css" />
+</head>
+<body>
+  <aside id="sidebar-wrap">
+    <div class="brand">
+      <div class="brand-logo"><span class="icon" id="brand-icon"></span></div>
+      <div>
+        <div class="brand-name">文件工具箱</div>
+        <div class="brand-sub">FileKit</div>
+      </div>
+    </div>
+    <nav id="sidebar" class="nav"></nav>
+    <div class="sidebar-foot">
+      <span id="sidebar-ver"></span>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header id="topbar">
+      <div class="topbar-text">
+        <h1 id="view-title"></h1>
+        <div class="topbar-desc" id="view-desc"></div>
+      </div>
+    </header>
+    <section id="view" class="view"></section>
+  </main>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script>
+    // 品牌图标（需要 DOM 内联注入）
+    document.getElementById('brand-icon').innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + window.FK_ICONS.logo + '</svg>';
+  </script>
+  <script src="assets/js/mock.js"></script>
+  <script src="assets/js/views/extract.js"></script>
+  <script src="assets/js/views/imagehost.js"></script>
+  <script src="assets/js/views/coming.js"></script>
+  <script src="assets/js/views/settings.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

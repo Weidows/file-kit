@@ -1,0 +1,11 @@
+{
+  "name": "file-kit",
+  "version": "0.2.0",
+  "private": true,
+  "description": "uTools 插件：文件工具箱（解散文件夹等），零依赖",
+  "scripts": {
+    "test": "node test/extract.test.js",
+    "logo": "node scripts/gen-logo.js",
+    "pack": "node scripts/pack.js"
+  }
+}
