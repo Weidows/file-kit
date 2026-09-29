@@ -1,6 +1,6 @@
 {
   "name": "file-kit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "uTools 插件：文件工具箱（解散文件夹等），零依赖",
   "scripts": {

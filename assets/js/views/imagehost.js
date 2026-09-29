@@ -347,20 +347,25 @@
           } }, 'MD'),
           h('button', {
             class: 'btn btn-mini btn-ghost', title: '从图床删除该文件并移除记录',
-            onclick: async () => {
+            onclick: async (e) => {
+              const delBtn = e.currentTarget; // 同步阶段先捕获，await 之后事件对象会失效
               const go = await confirmModal({
                 title: '删除这张图？',
                 body: h('div', null, '将从图床删除文件并移除本地记录：', h('br'), ellipsizeMiddle(rec.url, 60)),
                 okText: '删除', okStyle: 'danger', icon: 'trash',
               });
               if (!go) return;
+              delBtn.disabled = true;
+              delBtn.textContent = '删除中…';
               try {
                 await window.FK.imagehost.removeObject(cfg(), rec.key);
                 window.FK.imageHistory.replace(window.FK.imageHistory.list().filter((r) => r.id !== rec.id));
                 renderHistory();
                 toast('已删除：' + rec.name, 'ok');
-              } catch (e) {
-                toast('删除失败：' + (e && e.message), 'err');
+              } catch (err) {
+                toast('删除失败：' + (err && err.message), 'err');
+                delBtn.disabled = false;
+                delBtn.textContent = '删除';
               }
             },
           }, icon('trash'))))));

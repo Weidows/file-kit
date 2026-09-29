@@ -87,13 +87,13 @@
     const btnTest = h('button', {
       class: 'btn btn-ghost',
       disabled: false,
-      onclick: async (e) => {
+      onclick: async () => {
         const form = readForm();
         const saved = window.FK.settings.get().s3 || {};
         const merged = Object.assign({}, saved, form);
         const missing = ['endpoint', 'bucket', 'accessKey', 'secretKey'].filter((k) => !merged[k]);
         if (missing.length) { toast('缺少必填项：' + missing.join(' / '), 'warn'); return; }
-        e.currentTarget.disabled = true;
+        btnTest.disabled = true;
         testResult.textContent = '测试中…（上传探针文件并清理）';
         try {
           const r = await window.FK.imagehost.testConfig(merged);
@@ -101,7 +101,7 @@
         } catch (err) {
           testResult.textContent = '✘ ' + ((err && err.message) || String(err));
         } finally {
-          e.currentTarget.disabled = false;
+          btnTest.disabled = false;
         }
       },
     }, icon('scan'), '测试连接');

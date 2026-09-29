@@ -166,7 +166,8 @@
           ['rename', '智能重命名', '重名文件自动命名为 "name (1).ext"'],
           ['skip', '跳过', '保留目标目录已有的同名文件'],
           ['overwrite', '覆盖', '用源文件替换目标同名文件（不可恢复）'],
-        ], state.options.conflict, (v) => { state.options.conflict = v; saveOptions(); invalidate(); })));
+        ], state.options.conflict, (v) => { state.options.conflict = v; saveOptions(); invalidate(); })),
+      customTargetRow);
     renderCustomTarget();
 
     /* ---------------- 预览 ---------------- */
@@ -244,6 +245,7 @@
       onclick: () => {
         if (!state.paths.length) return;
         setBusy(true);
+        btnScan.replaceChildren(icon('scan'), '扫描中…'); // 大目录扫描会短暂占线，给个进行中状态
         setTimeout(() => {
           try {
             state.plan = window.FK.extract.scan(state.paths, state.options);
@@ -255,6 +257,7 @@
             toast('扫描失败：' + (e && e.message), 'err');
           } finally {
             setBusy(false);
+            btnScan.replaceChildren(icon('scan'), '扫描预览');
           }
         }, 30);
       },
